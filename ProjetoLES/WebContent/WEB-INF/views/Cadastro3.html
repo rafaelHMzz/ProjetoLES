@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Demian Fitness</title>
+        <meta charset="ISO-8859-1">
+        <meta name="author" content="Rafael">
+        <meta name="description" content="">
+        <meta name="keywords" content="html5, tecnologia">
+        
+        <link rel="stylesheet" href="resources/CSS/estilo.css">
+    </head>
+    <body>
+        <div id="Principal">
+            <header class="hero">
+                <div class="hero-content">
+                    <h1>Cadastro de Produtos</h1>
+                </div>
+            </header>
+            <nav>
+                <ul>
+                    <li><h1>MENU</h1></li>
+                    <li><a th:href="@{/inicioAdm}">Início</a></li>
+                    <li><a th:href="@{/telaCadastro1}">Cadastrar Produtos</a></li>
+                    <li><a th:href="@{/controleEstoque}">Controle Estoque</a></li>
+                    <li><a th:href="@{/sair}">Sair</a></li>
+                </ul>
+            </nav>
+            <main>
+                <section class="content-section2">
+                    <form th:action="@{/salvar}" th:object="${produto}" th:method="post">
+                   		<label class="label2">Código de Barras:</label>
+                   		<input type=text th:field="*{cod_barras}" th:value="*{cod_barras}" readonly="readonly">
+                   		<label class="label2">Quantidade:</label>
+                   		<input type=text th:field="*{qnt}" th:value="*{qnt}" readonly="readonly">
+                   		<label class="label2">Tipo do produto:</label>
+                   		<input type=text th:field="*{tipo}" th:value="*{tipo}">
+                   		<label class="label2">Nome:</label>
+                   		<input type=text th:field="*{nome}" th:value="*{nome}">
+                   		<label class="label2">Preço:</label>
+                   		<input type=text th:field="*{preco}" th:value="*{preco}">
+						<button type="submit" name="cmd" value="salvar">Salvar</button>
+						<button type="submit" name="cmd" value="excluir">Excluir</button>
+                    </form>
+                </section>
+            </main>
+        </div>
+        
+    </body>
+</html>

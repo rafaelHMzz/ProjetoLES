@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Demian Fitness</title>
+        <meta charset="ISO-8859-1">
+        <meta name="author" content="Rafael">
+        <meta name="description" content="">
+        <meta name="keywords" content="html5, tecnologia">
+        
+        <link rel="stylesheet" href="resources/CSS/estilo.css">
+    </head>
+    <body>
+        <div id="Principal">
+            <header class="hero">
+                <div class="hero-content">
+                    <h1>Início {ADM}</h1>
+                </div>
+            </header>
+            <nav>
+                <ul>
+                    <li><h1>MENU</h1></li>
+                    <li><a th:href="@{/inicioAdm}">Início</a></li>
+                    <li><a th:href="@{/telaCadastro1}">Cadastrar Produtos</a></li>
+                    <li><a th:href="@{/controleEstoque}">Controle Estoque</a></li>
+                    <li><a th:href="@{/sair}">Sair</a></li>
+                </ul>
+            </nav>
+            <main>
+                <section class="content-section">
+                    <form th:action="@{/}" th:method="post">
+                        <table class="content-table">
+                            <thead>
+                                <tr>
+                                    <th>Código de Barras</th>
+                                    <th>Nome</th>
+                                    <th>Tipo</th>
+                                    <th>Quantidade</th>
+                                    <th>Preço</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="p : ${listaProdutos}">
+                                    <td th:text="${p.cod_barras}"></td>
+                                    <td th:text="${p.nome}"></td>
+                                    <td th:text="${p.tipo}"></td>
+                                    <td th:text="${p.qnt}"></td>
+                                    <td th:text="${p.preco}"></td>
+                                </tr>
+                        </table>
+                    </form>
+                </section>
+            </main>
+        </div>
+        
+    </body>
+</html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Demian Fitness</title>
+        <meta charset="ISO-8859-1">
+        <meta name="author" content="Rafael">
+        <meta name="description" content="">
+        <meta name="keywords" content="html5, tecnologia">
+        
+        <link rel="stylesheet" href="resources/CSS/estilo.css">
+    </head>
+    <body>
+        <div id="Principal">
+            <header class="hero">
+                <div class="hero-content">
+                    <h1>Cadastro de Produtos</h1>
+                </div>
+            </header>
+            <nav>
+                <ul>
+                    <li><h1>MENU</h1></li>
+                    <li><a th:href="@{/inicioAdm}">Início</a></li>
+                    <li><a th:href="@{/telaCadastro1}">Cadastrar Produtos</a></li>
+                    <li><a th:href="@{/controleEstoque}">Controle Estoque</a></li>
+                    <li><a th:href="@{/sair}">Sair</a></li>
+                </ul>
+            </nav>
+            <main>
+                <section class="content-section2">
+                    <form th:action="@{/telaCadastro3}" th:method="post">
+                   		<input type=text th:value="${tipo}" th:name="tipo" readonly=readonly>
+                   		<label class="label2">Insira o código de barras:</label>
+						<input type=text name="cod">
+						<button type="submit" name="cmd" value="cadastrar">Cadastrar</button>
+                    </form>
+                </section>
+            </main>
+        </div>
+        
+    </body>
+</html>

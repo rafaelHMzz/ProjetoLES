@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Demian Fitness</title>
+        <meta charset="ISO-8859-1">
+        <meta name="author" content="Rafael">
+        <meta name="description" content="">
+        <meta name="keywords" content="html5, tecnologia">
+        
+        <link rel="stylesheet" href="resources/CSS/estilo.css">
+    </head>
+    <body>
+        <div id="Principal">
+            <header class="hero">
+                <div class="hero-content">
+                    <h1>Lista de Compras</h1>
+                </div>
+            </header>
+            <nav>
+                <ul>
+                    <li><h1>MENU</h1></li>
+                    <li><a th:href="@{/inicioUser}">Início</a></li>
+                    <li><a th:href="@{/telaCompra}">Comprar</a></li>
+                    <li><a th:href="@{/tabelaCompras}">Mostrar Compras</a></li>
+                    <li><a th:href="@{/sair}">Sair</a></li>
+                </ul>
+            </nav>
+            <main>
+                <section class="content-section">
+                    <form th:action="@{/}" th:method="post">
+                        <table class="content-table">
+                            <thead>
+                                <tr>
+                                    <th>Código de Barras</th>
+                                    <th>Nome</th>
+                                    <th>Tipo</th>
+                                    <th>Quantidade compradas</th>
+                                    <th>Preço</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="c : ${listaCompras}">
+                                    <td th:text="${c.cod_barras}"></td>
+                                    <td th:text="${c.nome}"></td>
+                                    <td th:text="${c.tipo}"></td>
+                                    <td th:text="${c.qnt}"></td>
+                                    <td th:text="${c.preco}"></td>
+                                    <td th:text="${c.total}"></td>
+                                </tr>
+                        </table>
+                    </form>
+                </section>
+            </main>
+        </div>
+        
+    </body>
+</html>

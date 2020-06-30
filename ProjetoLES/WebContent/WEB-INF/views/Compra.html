@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Página de Estrutura Básica</title>
+        <meta charset="ISO-8859-1">
+        <meta name="author" content="Rafael">
+        <meta name="description" content="">
+        <meta name="keywords" content="html5, tecnologia">
+        
+        <link rel="stylesheet" href="resources/CSS/estilo.css">
+    </head>
+    <body>
+        <div id="Principal">
+            <header class="hero">
+                <div class="hero-content">
+                    <h1>Loja</h1>
+                </div>
+            </header>
+            <nav>
+                <ul>
+                    <li><h1>MENU</h1></li>
+                    <li><a th:href="@{/inicioUser}">Início</a></li>
+                    <li><a th:href="@{/telaCompra}">Comprar</a></li>
+                    <li><a th:href="@{/tabelaCompras}">Mostrar Compras</a></li>
+                    <li><a th:href="@{/sair}">Sair</a></li>
+                </ul>
+            </nav>
+            <main>
+                <section class="content-section">
+                    <form action="#" th:action="@{/realizaCompra}" th:object="${listaCompra}" th:method="post">
+                        <table class="content-table">
+                            <thead>
+                                <tr>
+                                    <th>Código de Barras</th>
+                                    <th>Nome</th>
+                                    <th>Tipo</th>
+                                    <th>Preço</th>
+                                    <th>Quantidade em estoque</th>
+                                    <th>Quantidade na compra</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="p,stat : *{listaProdutos}">
+                                    <td><input type=text th:field="*{listaProdutos[__${stat.index}__].cod_barras}" th:value="${p.getCod_barras()}" readonly="readonly"></td>
+                                    <td><input type=text th:field="*{listaProdutos[__${stat.index}__].nome}" th:value="${p.getNome()}" readonly="readonly"></td>
+                                    <td><input type=text th:field="*{listaProdutos[__${stat.index}__].tipo}" th:value="${p.getTipo()}" readonly="readonly"></td>
+									<td><input type=text th:field="*{listaProdutos[__${stat.index}__].preco}" th:value="${p.getPreco()}" readonly="readonly"></td>
+									<td><input type=text th:value="${p.getQnt()}" readonly="readonly"></td>
+									<td><input type=number th:field="*{listaProdutos[__${stat.index}__].qnt}" th:value="${p.getQnt()}"></td>
+                                </tr>
+                        </table>
+                        <div class="buttons">
+                       		<button type="submit" name="cmd" value="salvar">Comprar</button>
+                        </div>
+                    </form>
+                </section>
+            </main>
+        </div>
+        
+    </body>
+</html>
